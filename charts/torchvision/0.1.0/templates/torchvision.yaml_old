@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: torchvision-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: torchvision
+  template:
+    metadata:
+      labels:
+        component: torchvision
+    spec:
+      containers:
+        - image: mispicer/modelfoundrypublic:torchvision_custom
+          name: torchvision
+      restartPolicy: Always
